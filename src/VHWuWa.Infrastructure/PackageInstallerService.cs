@@ -173,7 +173,7 @@ public sealed class PackageInstallerService : IPackageInstallerService
             var restore = _backup.Restore(gamePath, pkg.BackupId);
             if (!restore.Success) return Task.FromResult(restore);
 
-            // Dọn các thư mục rỗng do gói tạo (VD ~mods, wuwaVietHoa)
+            // Dọn thư mục rỗng do gói tạo (VD wuwaVietHoa/)
             RemoveEmptyDirsUpward(gamePath, pkg.InstalledFiles);
 
             var cache = Path.Combine(_modCacheDir, packageId);
