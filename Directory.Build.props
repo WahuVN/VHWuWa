@@ -9,6 +9,5 @@
     <Company>WahuVN</Company>
     <Copyright>Copyright © WahuVN</Copyright>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 </Project>
