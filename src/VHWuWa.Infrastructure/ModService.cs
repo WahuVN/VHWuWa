@@ -130,4 +130,63 @@ public sealed class FontService : IFontService
         }
         return Result.Ok();
     }
+
+    private static string VhDir(string gamePath)
+        => Path.Combine(gamePath, "Client", "Binaries", "Win64", "wuwaVietHoa");
+
+    public Task<Result> ApplyFontPakAsync(string gamePath, string fontPakPath, CancellationToken ct = default)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(gamePath) || !Directory.Exists(gamePath))
+                return Task.FromResult(Result.Fail("Chưa chọn thư mục game hợp lệ."));
+            if (!File.Exists(fontPakPath))
+                return Task.FromResult(Result.Fail("Không thấy file font: " + fontPakPath));
+
+            var vh = VhDir(gamePath);
+            if (!Directory.Exists(vh))
+                return Task.FromResult(Result.Fail(
+                    "Chưa cài Việt hóa (thiếu thư mục wuwaVietHoa). Hãy cài Việt hóa trước khi đổi font."));
+
+            // Xóa font pak cũ (priority 100) để tránh mount trùng
+            foreach (var old in Directory.EnumerateFiles(vh, "*_100_P.pak"))
+                File.Delete(old);
+
+            var dest = Path.Combine(vh, Path.GetFileName(fontPakPath));
+            File.Copy(fontPakPath, dest, overwrite: true);
+            return Task.FromResult(Result.Ok());
+        }
+        catch (Exception e)
+        {
+            return Task.FromResult(Result.Fail(e.Message));
+        }
+    }
+
+    public Task<Result> RemoveFontPaksAsync(string gamePath, CancellationToken ct = default)
+    {
+        try
+        {
+            var vh = VhDir(gamePath);
+            if (!Directory.Exists(vh)) return Task.FromResult(Result.Ok());
+            var n = 0;
+            foreach (var old in Directory.EnumerateFiles(vh, "*_100_P.pak")) { File.Delete(old); n++; }
+            return Task.FromResult(n > 0 ? Result.Ok() : Result.Fail("Không có font pak nào để xóa."));
+        }
+        catch (Exception e)
+        {
+            return Task.FromResult(Result.Fail(e.Message));
+        }
+    }
+
+    public string? CurrentFontPak(string gamePath)
+    {
+        try
+        {
+            var vh = VhDir(gamePath);
+            if (!Directory.Exists(vh)) return null;
+            return Directory.EnumerateFiles(vh, "*_100_P.pak")
+                .Select(Path.GetFileName).FirstOrDefault();
+        }
+        catch { return null; }
+    }
 }

@@ -1,0 +1,581 @@
+{
+  "count": 72,
+  "fonts": [
+    {
+      "name": "Arial",
+      "family": "Arial",
+      "pak": "Arial_100_P.pak",
+      "sizeKb": 1021.9,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\arial.ttf"
+    },
+    {
+      "name": "Arial Bold",
+      "family": "Arial-Bold",
+      "pak": "Arial-Bold_100_P.pak",
+      "sizeKb": 967.3,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\arialbd.ttf"
+    },
+    {
+      "name": "Arial Bold Italic",
+      "family": "Arial-Bold-Italic",
+      "pak": "Arial-Bold-Italic_100_P.pak",
+      "sizeKb": 708.6,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\arialbi.ttf"
+    },
+    {
+      "name": "Arial Italic",
+      "family": "Arial-Italic",
+      "pak": "Arial-Italic_100_P.pak",
+      "sizeKb": 705.4,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\ariali.ttf"
+    },
+    {
+      "name": "Calibri",
+      "family": "Calibri",
+      "pak": "Calibri_100_P.pak",
+      "sizeKb": 1612.6,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\calibri.ttf"
+    },
+    {
+      "name": "Calibri Bold",
+      "family": "Calibri-Bold",
+      "pak": "Calibri-Bold_100_P.pak",
+      "sizeKb": 1578.4,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\calibrib.ttf"
+    },
+    {
+      "name": "Calibri Bold Italic",
+      "family": "Calibri-Bold-Italic",
+      "pak": "Calibri-Bold-Italic_100_P.pak",
+      "sizeKb": 1137.3,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\calibriz.ttf"
+    },
+    {
+      "name": "Calibri Italic",
+      "family": "Calibri-Italic",
+      "pak": "Calibri-Italic_100_P.pak",
+      "sizeKb": 1175.0,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\calibrii.ttf"
+    },
+    {
+      "name": "Calibri Light",
+      "family": "Calibri-Light",
+      "pak": "Calibri-Light_100_P.pak",
+      "sizeKb": 1408.3,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\calibril.ttf"
+    },
+    {
+      "name": "Calibri Light Italic",
+      "family": "Calibri-Light-Italic",
+      "pak": "Calibri-Light-Italic_100_P.pak",
+      "sizeKb": 1041.6,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\calibrili.ttf"
+    },
+    {
+      "name": "Cambria",
+      "family": "Cambria",
+      "pak": "Cambria_100_P.pak",
+      "sizeKb": 1507.2,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\cambria.ttc"
+    },
+    {
+      "name": "Cambria Bold",
+      "family": "Cambria-Bold",
+      "pak": "Cambria-Bold_100_P.pak",
+      "sizeKb": 822.4,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\cambriab.ttf"
+    },
+    {
+      "name": "Cambria Bold Italic",
+      "family": "Cambria-Bold-Italic",
+      "pak": "Cambria-Bold-Italic_100_P.pak",
+      "sizeKb": 837.3,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\cambriaz.ttf"
+    },
+    {
+      "name": "Cambria Italic",
+      "family": "Cambria-Italic",
+      "pak": "Cambria-Italic_100_P.pak",
+      "sizeKb": 872.4,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\cambriai.ttf"
+    },
+    {
+      "name": "Candara",
+      "family": "Candara",
+      "pak": "Candara_100_P.pak",
+      "sizeKb": 237.0,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\Candara.ttf"
+    },
+    {
+      "name": "Candara Bold",
+      "family": "Candara-Bold",
+      "pak": "Candara-Bold_100_P.pak",
+      "sizeKb": 245.6,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\Candarab.ttf"
+    },
+    {
+      "name": "Candara Bold Italic",
+      "family": "Candara-Bold-Italic",
+      "pak": "Candara-Bold-Italic_100_P.pak",
+      "sizeKb": 249.4,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\Candaraz.ttf"
+    },
+    {
+      "name": "Candara Italic",
+      "family": "Candara-Italic",
+      "pak": "Candara-Italic_100_P.pak",
+      "sizeKb": 246.0,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\Candarai.ttf"
+    },
+    {
+      "name": "Candara Light",
+      "family": "Candara-Light",
+      "pak": "Candara-Light_100_P.pak",
+      "sizeKb": 246.9,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\Candaral.ttf"
+    },
+    {
+      "name": "Candara Light Italic",
+      "family": "Candara-Light-Italic",
+      "pak": "Candara-Light-Italic_100_P.pak",
+      "sizeKb": 185.6,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\Candarali.ttf"
+    },
+    {
+      "name": "Cascadia Code Regular",
+      "family": "Cascadia-Code-Regular",
+      "pak": "Cascadia-Code-Regular_100_P.pak",
+      "sizeKb": 379.5,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\CascadiaCode.ttf"
+    },
+    {
+      "name": "Cascadia Mono Regular",
+      "family": "Cascadia-Mono-Regular",
+      "pak": "Cascadia-Mono-Regular_100_P.pak",
+      "sizeKb": 363.3,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\CascadiaMono.ttf"
+    },
+    {
+      "name": "Consolas",
+      "family": "Consolas",
+      "pak": "Consolas_100_P.pak",
+      "sizeKb": 443.2,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\consola.ttf"
+    },
+    {
+      "name": "Consolas Bold",
+      "family": "Consolas-Bold",
+      "pak": "Consolas-Bold_100_P.pak",
+      "sizeKb": 383.3,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\consolab.ttf"
+    },
+    {
+      "name": "Consolas Bold Italic",
+      "family": "Consolas-Bold-Italic",
+      "pak": "Consolas-Bold-Italic_100_P.pak",
+      "sizeKb": 393.0,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\consolaz.ttf"
+    },
+    {
+      "name": "Consolas Italic",
+      "family": "Consolas-Italic",
+      "pak": "Consolas-Italic_100_P.pak",
+      "sizeKb": 451.4,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\consolai.ttf"
+    },
+    {
+      "name": "Constantia",
+      "family": "Constantia",
+      "pak": "Constantia_100_P.pak",
+      "sizeKb": 438.5,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\constan.ttf"
+    },
+    {
+      "name": "Constantia Bold",
+      "family": "Constantia-Bold",
+      "pak": "Constantia-Bold_100_P.pak",
+      "sizeKb": 441.9,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\constanb.ttf"
+    },
+    {
+      "name": "Constantia Bold Italic",
+      "family": "Constantia-Bold-Italic",
+      "pak": "Constantia-Bold-Italic_100_P.pak",
+      "sizeKb": 445.6,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\constanz.ttf"
+    },
+    {
+      "name": "Constantia Italic",
+      "family": "Constantia-Italic",
+      "pak": "Constantia-Italic_100_P.pak",
+      "sizeKb": 438.9,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\constani.ttf"
+    },
+    {
+      "name": "Corbel",
+      "family": "Corbel",
+      "pak": "Corbel_100_P.pak",
+      "sizeKb": 271.4,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\corbel.ttf"
+    },
+    {
+      "name": "Corbel Bold",
+      "family": "Corbel-Bold",
+      "pak": "Corbel-Bold_100_P.pak",
+      "sizeKb": 284.8,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\corbelb.ttf"
+    },
+    {
+      "name": "Corbel Bold Italic",
+      "family": "Corbel-Bold-Italic",
+      "pak": "Corbel-Bold-Italic_100_P.pak",
+      "sizeKb": 288.5,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\corbelz.ttf"
+    },
+    {
+      "name": "Corbel Italic",
+      "family": "Corbel-Italic",
+      "pak": "Corbel-Italic_100_P.pak",
+      "sizeKb": 278.7,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\corbeli.ttf"
+    },
+    {
+      "name": "Corbel Light",
+      "family": "Corbel-Light",
+      "pak": "Corbel-Light_100_P.pak",
+      "sizeKb": 168.9,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\corbell.ttf"
+    },
+    {
+      "name": "Corbel Light Italic",
+      "family": "Corbel-Light-Italic",
+      "pak": "Corbel-Light-Italic_100_P.pak",
+      "sizeKb": 165.9,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\corbelli.ttf"
+    },
+    {
+      "name": "Courier New",
+      "family": "Courier-New",
+      "pak": "Courier-New_100_P.pak",
+      "sizeKb": 798.7,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\cour.ttf"
+    },
+    {
+      "name": "Courier New Bold",
+      "family": "Courier-New-Bold",
+      "pak": "Courier-New-Bold_100_P.pak",
+      "sizeKb": 799.8,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\courbd.ttf"
+    },
+    {
+      "name": "Courier New Bold Italic",
+      "family": "Courier-New-Bold-Italic",
+      "pak": "Courier-New-Bold-Italic_100_P.pak",
+      "sizeKb": 580.0,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\courbi.ttf"
+    },
+    {
+      "name": "Courier New Italic",
+      "family": "Courier-New-Italic",
+      "pak": "Courier-New-Italic_100_P.pak",
+      "sizeKb": 667.6,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\couri.ttf"
+    },
+    {
+      "name": "Microsoft Sans Serif",
+      "family": "Microsoft-Sans-Serif",
+      "pak": "Microsoft-Sans-Serif_100_P.pak",
+      "sizeKb": 838.1,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\micross.ttf"
+    },
+    {
+      "name": "MS Reference Sans Serif",
+      "family": "MS-Reference-Sans-Serif",
+      "pak": "MS-Reference-Sans-Serif_100_P.pak",
+      "sizeKb": 215.7,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\REFSAN.TTF"
+    },
+    {
+      "name": "Palatino Linotype",
+      "family": "Palatino-Linotype",
+      "pak": "Palatino-Linotype_100_P.pak",
+      "sizeKb": 461.9,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\pala.ttf"
+    },
+    {
+      "name": "Palatino Linotype Bold",
+      "family": "Palatino-Linotype-Bold",
+      "pak": "Palatino-Linotype-Bold_100_P.pak",
+      "sizeKb": 410.8,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\palab.ttf"
+    },
+    {
+      "name": "Palatino Linotype Bold Italic",
+      "family": "Palatino-Linotype-Bold-Italic",
+      "pak": "Palatino-Linotype-Bold-Italic_100_P.pak",
+      "sizeKb": 328.1,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\palabi.ttf"
+    },
+    {
+      "name": "Palatino Linotype Italic",
+      "family": "Palatino-Linotype-Italic",
+      "pak": "Palatino-Linotype-Italic_100_P.pak",
+      "sizeKb": 404.7,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\palai.ttf"
+    },
+    {
+      "name": "Sans Serif Collection",
+      "family": "Sans-Serif-Collection",
+      "pak": "Sans-Serif-Collection_100_P.pak",
+      "sizeKb": 3687.7,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\SansSerifCollection.ttf"
+    },
+    {
+      "name": "Segoe UI",
+      "family": "Segoe-UI",
+      "pak": "Segoe-UI_100_P.pak",
+      "sizeKb": 937.9,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\segoeui.ttf"
+    },
+    {
+      "name": "Segoe UI Black",
+      "family": "Segoe-UI-Black",
+      "pak": "Segoe-UI-Black_100_P.pak",
+      "sizeKb": 311.9,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\seguibl.ttf"
+    },
+    {
+      "name": "Segoe UI Black Italic",
+      "family": "Segoe-UI-Black-Italic",
+      "pak": "Segoe-UI-Black-Italic_100_P.pak",
+      "sizeKb": 343.0,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\seguibli.ttf"
+    },
+    {
+      "name": "Segoe UI Bold",
+      "family": "Segoe-UI-Bold",
+      "pak": "Segoe-UI-Bold_100_P.pak",
+      "sizeKb": 925.6,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\segoeuib.ttf"
+    },
+    {
+      "name": "Segoe UI Bold Italic",
+      "family": "Segoe-UI-Bold-Italic",
+      "pak": "Segoe-UI-Bold-Italic_100_P.pak",
+      "sizeKb": 530.1,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\segoeuiz.ttf"
+    },
+    {
+      "name": "Segoe UI Italic",
+      "family": "Segoe-UI-Italic",
+      "pak": "Segoe-UI-Italic_100_P.pak",
+      "sizeKb": 518.9,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\segoeuii.ttf"
+    },
+    {
+      "name": "Segoe UI Light",
+      "family": "Segoe-UI-Light",
+      "pak": "Segoe-UI-Light_100_P.pak",
+      "sizeKb": 889.5,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\segoeuil.ttf"
+    },
+    {
+      "name": "Segoe UI Light Italic",
+      "family": "Segoe-UI-Light-Italic",
+      "pak": "Segoe-UI-Light-Italic_100_P.pak",
+      "sizeKb": 448.4,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\seguili.ttf"
+    },
+    {
+      "name": "Segoe UI Semibold",
+      "family": "Segoe-UI-Semibold",
+      "pak": "Segoe-UI-Semibold_100_P.pak",
+      "sizeKb": 952.3,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\seguisb.ttf"
+    },
+    {
+      "name": "Segoe UI Semibold Italic",
+      "family": "Segoe-UI-Semibold-Italic",
+      "pak": "Segoe-UI-Semibold-Italic_100_P.pak",
+      "sizeKb": 446.1,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\seguisbi.ttf"
+    },
+    {
+      "name": "Segoe UI Semilight",
+      "family": "Segoe-UI-Semilight",
+      "pak": "Segoe-UI-Semilight_100_P.pak",
+      "sizeKb": 829.0,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\segoeuisl.ttf"
+    },
+    {
+      "name": "Segoe UI Semilight Italic",
+      "family": "Segoe-UI-Semilight-Italic",
+      "pak": "Segoe-UI-Semilight-Italic_100_P.pak",
+      "sizeKb": 455.4,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\seguisli.ttf"
+    },
+    {
+      "name": "Segoe UI Variable",
+      "family": "Segoe-UI-Variable",
+      "pak": "Segoe-UI-Variable_100_P.pak",
+      "sizeKb": 1808.3,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\SegUIVar.ttf"
+    },
+    {
+      "name": "Sitka Text",
+      "family": "Sitka-Text",
+      "pak": "Sitka-Text_100_P.pak",
+      "sizeKb": 504.7,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\SitkaVF.ttf"
+    },
+    {
+      "name": "Sitka Text Italic",
+      "family": "Sitka-Text-Italic",
+      "pak": "Sitka-Text-Italic_100_P.pak",
+      "sizeKb": 545.8,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\SitkaVF-Italic.ttf"
+    },
+    {
+      "name": "Tahoma",
+      "family": "Tahoma",
+      "pak": "Tahoma_100_P.pak",
+      "sizeKb": 898.4,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\tahoma.ttf"
+    },
+    {
+      "name": "Tahoma Negreta",
+      "family": "Tahoma-Negreta",
+      "pak": "Tahoma-Negreta_100_P.pak",
+      "sizeKb": 830.1,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\tahomabd.ttf"
+    },
+    {
+      "name": "Times New Roman",
+      "family": "Times-New-Roman",
+      "pak": "Times-New-Roman_100_P.pak",
+      "sizeKb": 1163.5,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\times.ttf"
+    },
+    {
+      "name": "Times New Roman Bold",
+      "family": "Times-New-Roman-Bold",
+      "pak": "Times-New-Roman-Bold_100_P.pak",
+      "sizeKb": 1143.4,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\timesbd.ttf"
+    },
+    {
+      "name": "Times New Roman Bold Italic",
+      "family": "Times-New-Roman-Bold-Italic",
+      "pak": "Times-New-Roman-Bold-Italic_100_P.pak",
+      "sizeKb": 883.7,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\timesbi.ttf"
+    },
+    {
+      "name": "Times New Roman Italic",
+      "family": "Times-New-Roman-Italic",
+      "pak": "Times-New-Roman-Italic_100_P.pak",
+      "sizeKb": 941.0,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\timesi.ttf"
+    },
+    {
+      "name": "Verdana",
+      "family": "Verdana",
+      "pak": "Verdana_100_P.pak",
+      "sizeKb": 238.3,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\verdana.ttf"
+    },
+    {
+      "name": "Verdana Bold",
+      "family": "Verdana-Bold",
+      "pak": "Verdana-Bold_100_P.pak",
+      "sizeKb": 207.0,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\verdanab.ttf"
+    },
+    {
+      "name": "Verdana Bold Italic",
+      "family": "Verdana-Bold-Italic",
+      "pak": "Verdana-Bold-Italic_100_P.pak",
+      "sizeKb": 225.1,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\verdanaz.ttf"
+    },
+    {
+      "name": "Verdana Italic",
+      "family": "Verdana-Italic",
+      "pak": "Verdana-Italic_100_P.pak",
+      "sizeKb": 218.7,
+      "viGlyphs": "134/134",
+      "src": "C:\\WINDOWS\\Fonts\\verdanai.ttf"
+    }
+  ]
+}

@@ -23,8 +23,29 @@
         <TextBlock Text="Xem trước font" FontSize="18" FontWeight="Bold" Margin="0,22,0,10" />
         <ui:Card Padding="16">
             <StackPanel>
+                <TextBlock Text="Thư viện font tiếng Việt (chọn để đổi font trong game)"
+                           Opacity="0.7" Margin="0,0,0,6" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Column="0" ItemsSource="{Binding Library}"
+                              SelectedItem="{Binding SelectedLibraryFont}"
+                              DisplayMemberPath="Display" Margin="0,0,10,0" />
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <ui:Button Content="✅ Đổi sang font này" Appearance="Primary"
+                                Command="{Binding ApplyLibraryFontCommand}" Margin="0,0,8,0" />
+                        <Button Content="🗑 Bỏ font" Command="{Binding RemoveFontCommand}" />
+                    </StackPanel>
+                </Grid>
+                <TextBlock Text="{Binding LibraryMessage}" Opacity="0.75"
+                           TextWrapping="Wrap" Margin="0,8,0,0" />
+
+                <Separator Margin="0,14" />
+
                 <WrapPanel Margin="0,0,0,10">
-                    <ui:Button Content="📂 Chọn font để xem trước" Appearance="Primary"
+                    <ui:Button Content="📂 Chọn font ngoài để xem trước"
                             Command="{Binding PreviewFontCommand}" Margin="0,0,10,0" />
                 </WrapPanel>
                 <TextBlock Text="Chữ mẫu:" Opacity="0.7" Margin="0,0,0,4" />

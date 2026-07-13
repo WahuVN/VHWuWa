@@ -23,5 +23,6 @@
   <ItemGroup>
     <None Include="..\..\Config\**\*" Link="Config\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\Guides\**\*" Link="Guides\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\Fonts\fonts.json" Link="Fonts\fonts.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

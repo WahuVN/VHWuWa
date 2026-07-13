@@ -69,6 +69,15 @@ public interface IFontService
 {
     Task<Result> ApplyFontAsync(string gamePath, string vhwpackPath, CancellationToken ct = default);
     Task<Result> RestoreDefaultAsync(string gamePath, CancellationToken ct = default);
+
+    /// <summary>Áp 1 font pak thô (từ thư viện Fonts/) vào Win64/wuwaVietHoa/. Yêu cầu đã cài Việt hóa.</summary>
+    Task<Result> ApplyFontPakAsync(string gamePath, string fontPakPath, CancellationToken ct = default);
+
+    /// <summary>Xóa mọi font pak (priority 100) trong wuwaVietHoa/ → trả về font mặc định của bản VH.</summary>
+    Task<Result> RemoveFontPaksAsync(string gamePath, CancellationToken ct = default);
+
+    /// <summary>Tên file font pak đang dùng trong wuwaVietHoa/ (hoặc null).</summary>
+    string? CurrentFontPak(string gamePath);
 }
 
 /// <summary>Render ảnh xem trước một file font (.ttf/.otf/.ttc) với chữ mẫu tiếng Việt.</summary>

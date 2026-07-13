@@ -24,16 +24,49 @@ public partial class FontViewModel : ObservableObject
     [ObservableProperty] private ImageSource? _previewImage;
     [ObservableProperty] private string _previewMessage = "Chọn file font (.ttf/.otf/.ttc) để xem trước.";
 
+    public ObservableCollection<FontLibraryItem> Library { get; } = new();
+    [ObservableProperty] private FontLibraryItem? _selectedLibraryFont;
+    [ObservableProperty] private string _libraryMessage = "";
+
+    private static string FontDir => Path.Combine(AppContext.BaseDirectory, "Fonts");
+
     public FontViewModel(ISettingsService settings, IFontService fonts, IFontPreviewService preview)
     {
         _settings = settings; _fonts = fonts; _preview = preview;
+        LoadLibrary();
+    }
+
+    private void LoadLibrary()
+    {
+        Library.Clear();
+        var catalog = Path.Combine(FontDir, "fonts.json");
+        if (!File.Exists(catalog))
+        {
+            LibraryMessage = "Chưa có thư viện font (thiếu thư mục Fonts\\). Tải thêm font để chọn.";
+            return;
+        }
+        try
+        {
+            using var fs = File.OpenRead(catalog);
+            var doc = System.Text.Json.JsonDocument.Parse(fs);
+            foreach (var e in doc.RootElement.GetProperty("fonts").EnumerateArray())
+            {
+                Library.Add(new FontLibraryItem(
+                    e.GetProperty("name").GetString() ?? "",
+                    e.TryGetProperty("pak", out var p) ? p.GetString() ?? "" : "",
+                    e.TryGetProperty("src", out var s) ? s.GetString() ?? "" : "",
+                    e.TryGetProperty("sizeKb", out var k) ? k.GetDouble() : 0));
+            }
+            LibraryMessage = $"Thư viện có {Library.Count} font tiếng Việt.";
+        }
+        catch (Exception ex) { LibraryMessage = "Lỗi đọc thư viện font: " + ex.Message; }
     }
 
     public void OnActivated()
     {
-        var state = _settings.LoadState();
-        var f = state.InstalledPackages.FirstOrDefault(p => p.PackageType == PackageType.Font);
-        CurrentFont = f?.PackageName ?? "Mặc định";
+        var path = _settings.Settings.GamePath;
+        var pak = string.IsNullOrWhiteSpace(path) ? null : _fonts.CurrentFontPak(path);
+        CurrentFont = pak ?? "Mặc định";
     }
 
     [RelayCommand]
@@ -103,6 +136,53 @@ public partial class FontViewModel : ObservableObject
     {
         if (!string.IsNullOrEmpty(_lastFontPath)) RenderPreview(_lastFontPath);
     }
+
+    partial void OnSelectedLibraryFontChanged(FontLibraryItem? value)
+    {
+        if (value is null) return;
+        if (!string.IsNullOrEmpty(value.Src) && File.Exists(value.Src))
+            RenderPreview(value.Src);
+        else
+            PreviewMessage = value.Name + " (không có file nguồn để xem trước)";
+    }
+
+    [RelayCommand]
+    private async Task ApplyLibraryFontAsync()
+    {
+        var path = _settings.Settings.GamePath;
+        if (string.IsNullOrWhiteSpace(path)) { LibraryMessage = "Chưa chọn thư mục game."; return; }
+        if (SelectedLibraryFont is null) { LibraryMessage = "Hãy chọn 1 font trong danh sách."; return; }
+        var pak = Path.Combine(FontDir, SelectedLibraryFont.Pak);
+        Busy = true;
+        try
+        {
+            var r = await _fonts.ApplyFontPakAsync(path, pak);
+            LibraryMessage = r.Success
+                ? $"Đã áp font: {SelectedLibraryFont.Name}. Khởi động lại game để thấy."
+                : "Lỗi: " + r.Error;
+        }
+        finally { Busy = false; OnActivated(); }
+    }
+
+    [RelayCommand]
+    private async Task RemoveFontAsync()
+    {
+        var path = _settings.Settings.GamePath;
+        if (string.IsNullOrWhiteSpace(path)) { LibraryMessage = "Chưa chọn thư mục game."; return; }
+        Busy = true;
+        try
+        {
+            var r = await _fonts.RemoveFontPaksAsync(path);
+            LibraryMessage = r.Success ? "Đã gỡ font (về font mặc định của bản VH)." : "Lỗi: " + r.Error;
+        }
+        finally { Busy = false; OnActivated(); }
+    }
+}
+
+/// <summary>1 mục trong thư viện font (Fonts/fonts.json).</summary>
+public sealed record FontLibraryItem(string Name, string Pak, string Src, double SizeKb)
+{
+    public string Display => SizeKb > 0 ? $"{Name}  ·  {SizeKb:0} KB" : Name;
 }
 
 public partial class BackupViewModel : ObservableObject
