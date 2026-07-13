@@ -1,6 +1,8 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
@@ -13,14 +15,18 @@ public partial class FontViewModel : ObservableObject
 {
     private readonly ISettingsService _settings;
     private readonly IFontService _fonts;
+    private readonly IFontPreviewService _preview;
 
     [ObservableProperty] private string _message = "Chọn gói font (.vhwpack) để áp dụng.";
     [ObservableProperty] private string _currentFont = "Mặc định";
     [ObservableProperty] private bool _busy;
+    [ObservableProperty] private string _sampleText = "Tiếng Việt Wuthering Waves";
+    [ObservableProperty] private ImageSource? _previewImage;
+    [ObservableProperty] private string _previewMessage = "Chọn file font (.ttf/.otf/.ttc) để xem trước.";
 
-    public FontViewModel(ISettingsService settings, IFontService fonts)
+    public FontViewModel(ISettingsService settings, IFontService fonts, IFontPreviewService preview)
     {
-        _settings = settings; _fonts = fonts;
+        _settings = settings; _fonts = fonts; _preview = preview;
     }
 
     public void OnActivated()
@@ -56,6 +62,46 @@ public partial class FontViewModel : ObservableObject
             Message = r.Success ? "Đã khôi phục font mặc định." : "Lỗi: " + r.Error;
         }
         finally { Busy = false; OnActivated(); }
+    }
+
+    [RelayCommand]
+    private void PreviewFont()
+    {
+        var dlg = new OpenFileDialog
+        {
+            Title = "Chọn font để xem trước",
+            Filter = "Font (*.ttf;*.otf;*.ttc)|*.ttf;*.otf;*.ttc|Tất cả (*.*)|*.*"
+        };
+        if (dlg.ShowDialog() != true) return;
+        RenderPreview(dlg.FileName);
+    }
+
+    private string? _lastFontPath;
+
+    private void RenderPreview(string fontPath)
+    {
+        _lastFontPath = fontPath;
+        var png = _preview.RenderPreview(fontPath, SampleText);
+        if (png is null)
+        {
+            PreviewImage = null;
+            PreviewMessage = "Không đọc được font này.";
+            return;
+        }
+        using var ms = new MemoryStream(png);
+        var img = new BitmapImage();
+        img.BeginInit();
+        img.CacheOption = BitmapCacheOption.OnLoad;
+        img.StreamSource = ms;
+        img.EndInit();
+        img.Freeze();
+        PreviewImage = img;
+        PreviewMessage = Path.GetFileName(fontPath);
+    }
+
+    partial void OnSampleTextChanged(string value)
+    {
+        if (!string.IsNullOrEmpty(_lastFontPath)) RenderPreview(_lastFontPath);
     }
 }
 

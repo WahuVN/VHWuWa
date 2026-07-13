@@ -28,6 +28,7 @@ public static class ServiceCollectionExtensions
             configDir));
         services.AddSingleton<IModService, ModService>();
         services.AddSingleton<IFontService, FontService>();
+        services.AddSingleton<IFontPreviewService, FontPreviewService>();
         services.AddSingleton<IGraphicsService>(sp => new GraphicsService(
             sp.GetRequiredService<IBackupService>(), sp.GetRequiredService<ILogService>(), configDir));
         services.AddSingleton<IUpdateService>(sp => new UpdateService(

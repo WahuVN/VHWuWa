@@ -71,6 +71,13 @@ public interface IFontService
     Task<Result> RestoreDefaultAsync(string gamePath, CancellationToken ct = default);
 }
 
+/// <summary>Render ảnh xem trước một file font (.ttf/.otf/.ttc) với chữ mẫu tiếng Việt.</summary>
+public interface IFontPreviewService
+{
+    /// <summary>Trả về PNG (byte[]) hoặc null nếu không đọc được font / không phải Windows.</summary>
+    byte[]? RenderPreview(string fontFilePath, string sampleText, int fontSize = 30);
+}
+
 /// <summary>Chỉnh cấu hình đồ họa (đọc Config/graphics.json), có preset + backup.</summary>
 public interface IGraphicsService
 {
