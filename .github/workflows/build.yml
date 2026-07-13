@@ -30,10 +30,12 @@ jobs:
       - name: Test
         run: dotnet test VHWuWa.sln -c Release --no-build --verbosity normal
 
-      - name: Publish app (win-x64)
+      - name: Publish app (win-x64, 1 file .exe)
         run: |
-          dotnet publish src/VHWuWa.App/VHWuWa.App.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=false -o dist
-          dotnet publish src/VHWuWa.Updater/VHWuWa.Updater.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=false -o dist
+          dotnet publish src/VHWuWa.App/VHWuWa.App.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o dist
+          dotnet publish src/VHWuWa.Updater/VHWuWa.Updater.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o dist
+          Remove-Item dist/*.pdb -Force -ErrorAction SilentlyContinue
+        shell: pwsh
 
       - name: Làm rối DLL (Obfuscar) — tùy chọn, không chặn build
         continue-on-error: true

@@ -16,9 +16,13 @@ New-Item -ItemType Directory -Force $dist | Out-Null
 Write-Host "== Test ==" -ForegroundColor Cyan
 dotnet test "$root/VHWuWa.sln" -c Release
 
-Write-Host "== Publish App + Updater ==" -ForegroundColor Cyan
-dotnet publish "$root/src/VHWuWa.App/VHWuWa.App.csproj" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=false -o $dist
-dotnet publish "$root/src/VHWuWa.Updater/VHWuWa.Updater.csproj" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=false -o $dist
+Write-Host "== Publish App + Updater (1 file .exe duy nhất) ==" -ForegroundColor Cyan
+$pub = @("-c","Release","-r","win-x64","--self-contained","true",
+         "-p:PublishSingleFile=true","-p:IncludeNativeLibrariesForSelfExtract=true",
+         "-p:EnableCompressionInSingleFile=true")
+dotnet publish "$root/src/VHWuWa.App/VHWuWa.App.csproj" @pub -o $dist
+dotnet publish "$root/src/VHWuWa.Updater/VHWuWa.Updater.csproj" @pub -o $dist
+Remove-Item (Join-Path $dist "*.pdb") -Force -ErrorAction SilentlyContinue
 
 # Tài liệu kèm theo
 Copy-Item "$root/LICENSE" (Join-Path $dist "LICENSE.txt") -Force -ErrorAction SilentlyContinue
