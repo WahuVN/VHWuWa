@@ -54,3 +54,6 @@ Logs/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# B?n dóng gói (dùng Releases, không commit)
+*.zip
