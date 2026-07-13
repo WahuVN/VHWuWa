@@ -4,6 +4,9 @@ obj/
 [Dd]ebug/
 [Rr]elease/
 dist/
+out/
+out_single/
+publish/
 *.user
 *.suo
 .vs/
