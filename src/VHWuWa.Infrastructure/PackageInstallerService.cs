@@ -173,6 +173,9 @@ public sealed class PackageInstallerService : IPackageInstallerService
             var restore = _backup.Restore(gamePath, pkg.BackupId);
             if (!restore.Success) return Task.FromResult(restore);
 
+            // Dọn các thư mục rỗng do gói tạo (VD ~mods, wuwaVietHoa)
+            RemoveEmptyDirsUpward(gamePath, pkg.InstalledFiles);
+
             var cache = Path.Combine(_modCacheDir, packageId);
             if (Directory.Exists(cache)) Directory.Delete(cache, true);
 
@@ -188,8 +191,29 @@ public sealed class PackageInstallerService : IPackageInstallerService
         }
     }
 
-    private static bool HasFreeSpace(string gamePath, long need)
+    private static void RemoveEmptyDirsUpward(string gamePath, IEnumerable<string> destinations)
     {
+        var root = Path.GetFullPath(gamePath);
+        foreach (var d in destinations)
+        {
+            try
+            {
+                var dir = Path.GetDirectoryName(PathValidation.ResolveInsideRoot(gamePath, d));
+                while (!string.IsNullOrEmpty(dir)
+                       && dir.StartsWith(root, StringComparison.OrdinalIgnoreCase)
+                       && !string.Equals(dir, root, StringComparison.OrdinalIgnoreCase)
+                       && Directory.Exists(dir)
+                       && !Directory.EnumerateFileSystemEntries(dir).Any())
+                {
+                    Directory.Delete(dir);
+                    dir = Path.GetDirectoryName(dir);
+                }
+            }
+            catch { }
+        }
+    }
+
+    private static bool HasFreeSpace(string gamePath, long need)    {
         try
         {
             var root = Path.GetPathRoot(Path.GetFullPath(gamePath));

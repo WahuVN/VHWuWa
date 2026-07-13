@@ -1,11 +1,11 @@
 {
-  "gameId": "sample-game",
-  "gameName": "Sample Game",
-  "executable": "Game.exe",
+  "gameId": "wuthering-waves",
+  "gameName": "Wuthering Waves",
+  "executable": "Client/Binaries/Win64/Client-Win64-Shipping.exe",
   "requiredFiles": [
-    "Game.exe",
-    "Data/game.pak"
+    "Client/Binaries/Win64/Client-Win64-Shipping.exe"
   ],
   "possibleRegistryKeys": [],
-  "steamAppId": ""
+  "steamAppId": "3513350",
+  "_note": "Chọn THƯ MỤC CHỨA 'Client\\' — Launcher: ...\\Wuthering Waves\\Wuthering Waves Game ; Steam: ...\\Wuthering Waves. requiredFiles tương đối nên nhận đúng cả 2 bản."
 }
