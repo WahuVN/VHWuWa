@@ -1,0 +1,32 @@
+<UserControl x:Class="VHWuWa.App.Views.GuidePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
+    <Grid Margin="28,22,28,22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Hướng dẫn sử dụng" FontSize="24" FontWeight="Bold" Margin="0,0,0,14" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <DockPanel Grid.Column="0" Margin="0,0,12,0">
+                <ui:TextBox DockPanel.Dock="Top" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
+                         PlaceholderText="Tìm hướng dẫn..." Margin="0,0,0,8" />
+                <Button DockPanel.Dock="Bottom" Content="📂 Mở thư mục hướng dẫn"
+                        Command="{Binding OpenFolderCommand}" Margin="0,8,0,0" HorizontalAlignment="Stretch" />
+                <ListBox ItemsSource="{Binding Guides}" SelectedItem="{Binding Selected}" />
+            </DockPanel>
+            <ui:Card Grid.Column="1" Padding="14">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <TextBox Text="{Binding Content, Mode=OneWay}" IsReadOnly="True"
+                             TextWrapping="Wrap" BorderThickness="0" Background="Transparent"
+                             FontFamily="Consolas" />
+                </ScrollViewer>
+            </ui:Card>
+        </Grid>
+    </Grid>
+</UserControl>

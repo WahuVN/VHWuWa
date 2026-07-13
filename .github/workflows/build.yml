@@ -1,0 +1,76 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore VHWuWa.sln
+
+      - name: Build
+        run: dotnet build VHWuWa.sln -c Release --no-restore
+
+      - name: Test
+        run: dotnet test VHWuWa.sln -c Release --no-build --verbosity normal
+
+      - name: Publish app (win-x64)
+        run: |
+          dotnet publish src/VHWuWa.App/VHWuWa.App.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=false -o dist
+          dotnet publish src/VHWuWa.Updater/VHWuWa.Updater.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=false -o dist
+
+      - name: Làm rối DLL (Obfuscar) — tùy chọn, không chặn build
+        continue-on-error: true
+        run: |
+          dotnet tool install --global Obfuscar.GlobalTool || echo "skip install"
+          if (Test-Path obfuscar.xml) { obfuscar.console obfuscar.xml } else { echo "Không có obfuscar.xml — bỏ qua" }
+        shell: pwsh
+
+      - name: Kiểm tra app sau publish
+        run: if (-not (Test-Path dist/VHWuWa.exe)) { throw "Thiếu VHWuWa.exe" }
+        shell: pwsh
+
+      - name: Đóng gói ZIP + checksum + update manifest
+        run: |
+          $ver = "${{ github.ref_name }}".TrimStart('v'); if (-not $ver) { $ver = "1.0.0" }
+          $zip = "VHWuWa-$ver-win-x64.zip"
+          Compress-Archive -Path dist/* -DestinationPath $zip -Force
+          $sha = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLower()
+          "$sha  $zip" | Out-File checksums.txt -Encoding utf8
+          @{ version = $ver; minimumVersion = "1.0.0"; releaseNotes = "Bản phát hành $ver"; downloadUrl = "https://github.com/WahuVN/VHWuWa/releases/download/${{ github.ref_name }}/$zip"; sha256 = $sha; signature = ""; mandatory = $false } | ConvertTo-Json | Out-File update.json -Encoding utf8
+        shell: pwsh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: VHWuWa-win-x64
+          path: |
+            VHWuWa-*-win-x64.zip
+            checksums.txt
+            update.json
+
+      - name: Tạo GitHub Release (khi push tag v*)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            VHWuWa-*-win-x64.zip
+            checksums.txt
+            update.json
+          generate_release_notes: true

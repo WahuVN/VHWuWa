@@ -1,0 +1,52 @@
+<UserControl x:Class="VHWuWa.App.Views.GraphicsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="28,22,28,22">
+            <TextBlock Text="Đồ họa" FontSize="24" FontWeight="Bold" Margin="0,0,0,14" />
+
+            <TextBlock Text="{Binding Message}" TextWrapping="Wrap" Opacity="0.8" Margin="0,0,0,12" />
+
+            <StackPanel Visibility="{Binding IsSupported, Converter={StaticResource BoolToVis}}">
+                <TextBlock Text="Preset" FontWeight="SemiBold" Margin="0,0,0,8" />
+                <ItemsControl ItemsSource="{Binding Presets}" Margin="0,0,0,14">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding}" Margin="0,0,8,8"
+                                    Command="{Binding DataContext.ApplyPresetCommand,
+                                              RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    CommandParameter="{Binding}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <TextBlock Text="Tùy chỉnh chi tiết" FontWeight="SemiBold" Margin="0,0,0,8" />
+                <ItemsControl ItemsSource="{Binding Options}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="220" />
+                                    <ColumnDefinition Width="180" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Label}" VerticalAlignment="Center" />
+                                <ComboBox Grid.Column="1" ItemsSource="{Binding Choices}"
+                                          SelectedItem="{Binding Selected, Mode=TwoWay}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <WrapPanel Margin="0,14,0,0">
+                    <ui:Button Content="✔ Áp dụng tùy chỉnh" Appearance="Primary" Command="{Binding ApplyCustomCommand}" Margin="0,0,10,0" />
+                    <Button Content="📖 Đọc cấu hình hiện tại" Command="{Binding ReadCurrentCommand}" Margin="0,0,10,0" />
+                    <Button Content="📄 Mở file cấu hình" Command="{Binding OpenConfigCommand}" />
+                </WrapPanel>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

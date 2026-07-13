@@ -1,0 +1,35 @@
+<UserControl x:Class="VHWuWa.App.Views.LogPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
+    <Grid Margin="28,22,28,22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Nhật ký" FontSize="24" FontWeight="Bold" Margin="0,0,0,14" />
+        <WrapPanel Grid.Row="1" Margin="0,0,0,10">
+            <ComboBox ItemsSource="{Binding Levels}" SelectedItem="{Binding LevelFilter}" Width="120" Margin="0,0,10,0" />
+            <ui:TextBox Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" Width="240"
+                     PlaceholderText="Tìm..." Margin="0,0,10,0" />
+            <Button Content="🔄 Làm mới" Command="{Binding RefreshCommand}" Margin="0,0,10,0" />
+            <Button Content="📤 Xuất" Command="{Binding ExportCommand}" Margin="0,0,10,0" />
+            <Button Content="🗑 Xóa" Command="{Binding ClearCommand}" Margin="0,0,10,0" />
+            <Button Content="📂 Mở thư mục" Command="{Binding OpenFolderCommand}" />
+        </WrapPanel>
+        <ui:Card Grid.Row="2" Padding="6">
+            <ListView ItemsSource="{Binding Entries}" BorderThickness="0" Background="Transparent">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Thời gian" Width="160" DisplayMemberBinding="{Binding Timestamp}" />
+                        <GridViewColumn Header="Cấp" Width="70" DisplayMemberBinding="{Binding Level}" />
+                        <GridViewColumn Header="Nội dung" Width="620" DisplayMemberBinding="{Binding Message}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ui:Card>
+        <TextBlock Grid.Row="3" Text="{Binding Message}" Opacity="0.8" Margin="0,10,0,0" />
+    </Grid>
+</UserControl>

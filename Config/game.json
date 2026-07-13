@@ -1,0 +1,11 @@
+{
+  "gameId": "sample-game",
+  "gameName": "Sample Game",
+  "executable": "Game.exe",
+  "requiredFiles": [
+    "Game.exe",
+    "Data/game.pak"
+  ],
+  "possibleRegistryKeys": [],
+  "steamAppId": ""
+}

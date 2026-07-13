@@ -1,0 +1,56 @@
+<ui:FluentWindow x:Class="VHWuWa.App.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 Title="VHWuWa — Quản lý Việt hóa"
+                 Width="1050" Height="680" MinWidth="900" MinHeight="560"
+                 WindowStartupLocation="CenterScreen"
+                 ExtendsContentIntoTitleBar="True"
+                 WindowBackdropType="Mica">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0" Title="VHWuWa" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="234" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" BorderThickness="0,0,1,0"
+                    BorderBrush="{DynamicResource ControlElevationBorderBrush}">
+                <DockPanel Margin="8">
+                    <StackPanel DockPanel.Dock="Bottom" Margin="6,10,6,6">
+                        <Separator Margin="0,6" />
+                        <TextBlock Text="{Binding AppVersion}" Opacity="0.7" FontSize="12" />
+                        <TextBlock Text="{Binding GameStatus}" Opacity="0.7" FontSize="12" Margin="0,2,0,0"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Text="{Binding UpdateStatus}" Opacity="0.7" FontSize="12" Margin="0,2,0,6"
+                                   TextWrapping="Wrap" />
+                        <Button Content="🌓 Sáng / Tối" Command="{Binding ToggleThemeCommand}"
+                                HorizontalAlignment="Stretch" />
+                    </StackPanel>
+
+                    <ListBox x:Name="Nav" SelectionChanged="Nav_SelectionChanged"
+                             BorderThickness="0" Background="Transparent">
+                        <ListBoxItem Tag="home" Content="🏠  Trang chủ" />
+                        <ListBoxItem Tag="install" Content="🌐  Cài Việt hóa" />
+                        <ListBoxItem Tag="mod" Content="🧩  Quản lý mod" />
+                        <ListBoxItem Tag="font" Content="🔤  Font chữ" />
+                        <ListBoxItem Tag="graphics" Content="🎮  Đồ họa" />
+                        <ListBoxItem Tag="backup" Content="🗄️  Sao lưu" />
+                        <ListBoxItem Tag="guide" Content="📖  Hướng dẫn" />
+                        <ListBoxItem Tag="settings" Content="⚙️  Cài đặt" />
+                        <ListBoxItem Tag="log" Content="📝  Nhật ký" />
+                    </ListBox>
+                </DockPanel>
+            </Border>
+
+            <ContentControl x:Name="PageHost" Grid.Column="1" Margin="0" />
+        </Grid>
+    </Grid>
+</ui:FluentWindow>

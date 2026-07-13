@@ -1,0 +1,34 @@
+<UserControl x:Class="VHWuWa.App.Views.BackupPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
+    <Grid Margin="28,22,28,22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Sao lưu" FontSize="24" FontWeight="Bold" Margin="0,0,0,14" />
+        <WrapPanel Grid.Row="1" Margin="0,0,0,10">
+            <ui:Button Content="↩ Khôi phục" Appearance="Primary" Command="{Binding RestoreSelectedCommand}" Margin="0,0,10,0" />
+            <Button Content="🗑 Xóa" Command="{Binding DeleteSelectedCommand}" Margin="0,0,10,0" />
+            <Button Content="📂 Mở thư mục" Command="{Binding OpenFolderCommand}" Margin="0,0,10,0" />
+            <Button Content="🔄 Làm mới" Command="{Binding RefreshListCommand}" />
+        </WrapPanel>
+        <ui:Card Grid.Row="2" Padding="6">
+            <ListView ItemsSource="{Binding Backups}" SelectedItem="{Binding Selected}"
+                      BorderThickness="0" Background="Transparent">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Thời gian" Width="170" DisplayMemberBinding="{Binding CreatedAt}" />
+                        <GridViewColumn Header="Thao tác" Width="150" DisplayMemberBinding="{Binding Operation}" />
+                        <GridViewColumn Header="Gói" Width="180" DisplayMemberBinding="{Binding PackageId}" />
+                        <GridViewColumn Header="Số file" Width="80" DisplayMemberBinding="{Binding FileCount}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ui:Card>
+        <TextBlock Grid.Row="3" Text="{Binding Message}" Opacity="0.85" Margin="0,10,0,0" TextWrapping="Wrap" />
+    </Grid>
+</UserControl>

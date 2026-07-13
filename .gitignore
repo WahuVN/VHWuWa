@@ -1,0 +1,53 @@
+# ---- .NET build ----
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+dist/
+*.user
+*.suo
+.vs/
+artifacts/
+TestResults/
+*.binlog
+
+# ---- NuGet ----
+*.nupkg
+packages/
+
+# ---- BÍ MẬT: KHÔNG BAO GIỜ commit ----
+*.snk
+*.pfx
+*.p12
+*.key
+private*.pem
+*private*.pem
+*.private.json
+secrets.json
+appsettings.Secrets.json
+.env
+.env.*
+*.token
+github-token*.txt
+
+# ---- Obfuscar mapping (không đưa lên repo) ----
+Mapping.xml
+*.map.xml
+Confused/
+Obfuscated/
+
+# ---- Dữ liệu có bản quyền / phát hành thật ----
+*.vhwpack
+!Samples/**/*.vhwpack
+*.pak
+Release/*.vhwpack
+/PackageSource/
+
+# ---- Runtime/local ----
+Logs/
+*.log
+
+# ---- OS ----
+Thumbs.db
+Desktop.ini
+.DS_Store

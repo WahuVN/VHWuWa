@@ -1,0 +1,19 @@
+{
+  "configFormat": "ini",
+  "configPath": "Saved/Config/WindowsNoEditor/Engine.ini",
+  "options": [
+    { "key": "r.ScreenPercentage", "label": "Độ phân giải render (%)", "section": "SystemSettings", "choices": ["50", "67", "75", "100"] },
+    { "key": "r.MotionBlurQuality", "label": "Motion Blur", "section": "SystemSettings", "choices": ["0", "1", "4"] },
+    { "key": "sg.ShadowQuality", "label": "Chất lượng bóng", "section": "SystemSettings", "choices": ["0", "1", "2", "3"] },
+    { "key": "sg.TextureQuality", "label": "Chất lượng texture", "section": "SystemSettings", "choices": ["0", "1", "2", "3"] },
+    { "key": "sg.EffectsQuality", "label": "Hiệu ứng", "section": "SystemSettings", "choices": ["0", "1", "2", "3"] },
+    { "key": "r.VSync", "label": "V-Sync", "section": "SystemSettings", "choices": ["0", "1"] },
+    { "key": "t.MaxFPS", "label": "Giới hạn FPS", "section": "SystemSettings", "choices": ["0", "30", "60", "120", "144"] }
+  ],
+  "presets": [
+    { "name": "Mặc định", "values": { "r.ScreenPercentage": "100", "r.MotionBlurQuality": "4", "sg.ShadowQuality": "3", "sg.TextureQuality": "3", "sg.EffectsQuality": "3", "r.VSync": "1", "t.MaxFPS": "60" } },
+    { "name": "Máy yếu", "values": { "r.ScreenPercentage": "67", "r.MotionBlurQuality": "0", "sg.ShadowQuality": "0", "sg.TextureQuality": "1", "sg.EffectsQuality": "1", "r.VSync": "0", "t.MaxFPS": "60" } },
+    { "name": "Cân bằng", "values": { "r.ScreenPercentage": "85", "r.MotionBlurQuality": "1", "sg.ShadowQuality": "1", "sg.TextureQuality": "2", "sg.EffectsQuality": "2", "r.VSync": "0", "t.MaxFPS": "120" } },
+    { "name": "Chất lượng cao", "values": { "r.ScreenPercentage": "100", "r.MotionBlurQuality": "4", "sg.ShadowQuality": "3", "sg.TextureQuality": "3", "sg.EffectsQuality": "3", "r.VSync": "1", "t.MaxFPS": "0" } }
+  ]
+}

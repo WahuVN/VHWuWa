@@ -1,0 +1,22 @@
+<UserControl x:Class="VHWuWa.App.Views.FontPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
+    <StackPanel Margin="28,22,28,22">
+        <TextBlock Text="Font chữ" FontSize="24" FontWeight="Bold" Margin="0,0,0,14" />
+        <ui:Card Padding="18" Margin="0,0,0,14">
+            <StackPanel>
+                <TextBlock Text="Font đang dùng:" Opacity="0.7" />
+                <TextBlock Text="{Binding CurrentFont}" FontWeight="SemiBold" FontSize="16" Margin="0,4,0,0" />
+            </StackPanel>
+        </ui:Card>
+        <WrapPanel>
+            <ui:Button Content="🔤 Áp dụng font (.vhwpack)" Appearance="Primary"
+                    Command="{Binding ApplyCommand}" Margin="0,0,10,10" />
+            <Button Content="↩ Khôi phục font mặc định" Command="{Binding RestoreCommand}" Margin="0,0,10,10" />
+        </WrapPanel>
+        <ProgressBar IsIndeterminate="True" Height="4"
+                     Visibility="{Binding Busy, Converter={StaticResource BoolToVis}}" Margin="0,4" />
+        <TextBlock Text="{Binding Message}" TextWrapping="Wrap" Opacity="0.85" Margin="0,6,0,0" />
+    </StackPanel>
+</UserControl>

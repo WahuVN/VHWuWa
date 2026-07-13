@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "packageId": "demo-translation",
+  "packageName": "Bản Việt hóa DEMO",
+  "packageType": "translation",
+  "author": "WahuVN",
+  "version": "1.0.0",
+  "description": "Gói demo để kiểm thử — KHÔNG chứa tài sản game có bản quyền.",
+  "supportedGameVersions": ["1.0.0"],
+  "files": [
+    {
+      "source": "payload/readme.txt",
+      "destination": "Data/vhwuwa-demo.txt",
+      "sha256": "",
+      "operation": "copy"
+    }
+  ]
+}
